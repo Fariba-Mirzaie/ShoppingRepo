@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingAPI.Functions.Filtering;
 using ShoppingAPI.Models;
-using ShoppingAPI.Paging;
+using ShoppingAPI.Functions.Pagination;
 using ShoppingAPI.Repository;
+using ShoppingAPI.Functions.Sorting;
 
 namespace ShoppingAPI.Controllers
 {
@@ -17,12 +19,9 @@ namespace ShoppingAPI.Controllers
         }
 
         [HttpGet("GetAlSlider")]
-        public IEnumerable<Slider> GetAll(int currentPage, int pageSize)
+        public IEnumerable<Slider> GetAll([FromQuery] PaginationFilter pagination ,[FromQuery] SortingParams sorting , FilterParams filterparams)
         {
-            var skipCount = (currentPage - 1) * pageSize;
-            var totalCount = _sliderRepository.GetAllSlider().Count();
-            return _sliderRepository.GetAllSlider().Skip(skipCount).Take(pageSize);
-
+            return _sliderRepository.GetAllSlider(pagination , sorting , filterparams);
         }
     }
 }
