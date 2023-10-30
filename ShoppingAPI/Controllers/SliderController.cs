@@ -19,9 +19,12 @@ namespace ShoppingAPI.Controllers
         }
 
         [HttpGet("GetAlSlider")]
-        public IEnumerable<Slider> GetAll([FromQuery] PaginationFilter pagination ,[FromQuery] SortingParams sorting ,[FromQuery] FilterParams filterparams)
+        public IEnumerable<Slider> GetAll([FromQuery] PaginationFilter pagination, [FromQuery] SortingParams sorting, [FromQuery] FilterParams filterparams)
         {
-            return _sliderRepository.GetAllSlider(pagination , sorting , filterparams);
+            var lst = _sliderRepository.GetAllSlider(pagination, sorting, filterparams);
+            return lst;
         }
+
+
     }
 }

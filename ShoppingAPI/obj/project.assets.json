@@ -2899,19 +2899,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mirzaei\\.nuget\\packages\\": {}
+    "C:\\Users\\Fariba-Notebook\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
+      "projectUniqueName": "D:\\MyProject\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
       "projectName": "ShoppingAPI",
-      "projectPath": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
-      "packagesPath": "C:\\Users\\mirzaei\\.nuget\\packages\\",
-      "outputPath": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\obj\\",
+      "projectPath": "D:\\MyProject\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
+      "packagesPath": "C:\\Users\\Fariba-Notebook\\.nuget\\packages\\",
+      "outputPath": "D:\\MyProject\\ShoppingRepo\\ShoppingAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mirzaei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fariba-Notebook\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

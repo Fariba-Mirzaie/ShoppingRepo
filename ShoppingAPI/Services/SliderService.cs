@@ -13,23 +13,22 @@ namespace ShoppingAPI.Services
 
         public IEnumerable<Slider> GetAllSlider(PaginationFilter pagination, SortingParams sorting, FilterParams filtering)
         {
-            var validFilter = new PaginationFilter(pagination.pageNumber, pagination.pageSize);
-            var pagedData = _context.Sliders.AsQueryable();
-               
+            var slidersData = _context.Sliders.AsQueryable();
+            var validFilter = new PaginationFilter(pagination.pageNumber, pagination.pageSize, slidersData.Count());
+
             if (!string.IsNullOrEmpty(filtering.Title))
-                pagedData = pagedData.Where(s => s.Tilte.Contains(filtering.Title));
+                slidersData = slidersData.Where(s => s.Title.Contains(filtering.Title));
 
 
             if (sorting.Type == SortingParams.SortType.Asc)
-                pagedData = pagedData.OrderBy(s => s.SliderId);
-            else if(sorting.Type == SortingParams.SortType.Desc)
-                pagedData = pagedData.OrderByDescending(s => s.SliderId);
+                slidersData = slidersData.OrderBy(s => s.SliderId);
+            else if (sorting.Type == SortingParams.SortType.Desc)
+                slidersData = slidersData.OrderByDescending(s => s.SliderId);
 
 
-            var skipss = (validFilter.pageNumber - 1) * validFilter.pageSize;
-            pagedData = pagedData.Skip((validFilter.pageNumber - 1) * validFilter.pageSize).Take(validFilter.pageSize);;
+            slidersData = slidersData.Skip((validFilter.pageNumber - 1) * validFilter.pageSize).Take(validFilter.pageSize);
 
-            return pagedData.ToList();
+            return slidersData.ToList();
         }
 
         public Slider GetSlider(int id)

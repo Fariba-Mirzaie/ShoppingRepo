@@ -6,7 +6,7 @@ namespace ShoppingAPI.Models
     {
         public int SliderId { get; set; }
         [MaxLength(50,ErrorMessage ="تعداد کاراکتر مجاز 50 می باشد.")]
-        public string Tilte { get; set; }
+        public string Title { get; set; }
         public DateTime CreateDate { get; set; }
         public bool Status { get; set; } = true;
         public string Description { get; set; }
