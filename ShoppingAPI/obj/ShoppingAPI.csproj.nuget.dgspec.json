@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\MyFiles\\Project\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI.csproj": {}
+    "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj": {}
   },
   "projects": {
-    "E:\\MyFiles\\Project\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI.csproj": {
+    "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\MyFiles\\Project\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI.csproj",
+        "projectUniqueName": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
         "projectName": "ShoppingAPI",
-        "projectPath": "E:\\MyFiles\\Project\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI.csproj",
+        "projectPath": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
         "packagesPath": "C:\\Users\\mirzaei\\.nuget\\packages\\",
-        "outputPath": "E:\\MyFiles\\Project\\ShoppingAPI\\ShoppingAPI\\ShoppingAPI\\obj\\",
+        "outputPath": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mirzaei\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -20,14 +20,14 @@ namespace ShoppingAPI.Services
                 pagedData = pagedData.Where(s => s.Tilte.Contains(filtering.Title));
 
 
-            if (sorting.Type == 0)
+            if (sorting.Type == SortingParams.SortType.Asc)
                 pagedData = pagedData.OrderBy(s => s.SliderId);
-            else
+            else if(sorting.Type == SortingParams.SortType.Desc)
                 pagedData = pagedData.OrderByDescending(s => s.SliderId);
 
-            pagedData= pagedData.Skip((validFilter.pageNumber - 1) * validFilter.pageSize)
-               .Take(validFilter.pageSize);
 
+            var skipss = (validFilter.pageNumber - 1) * validFilter.pageSize;
+            pagedData = pagedData.Skip((validFilter.pageNumber - 1) * validFilter.pageSize).Take(validFilter.pageSize);;
 
             return pagedData.ToList();
         }
