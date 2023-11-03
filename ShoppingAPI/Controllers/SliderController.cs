@@ -5,6 +5,8 @@ using ShoppingAPI.Models;
 using ShoppingAPI.Functions.Pagination;
 using ShoppingAPI.Repository;
 using ShoppingAPI.Functions.Sorting;
+using AutoMapper;
+using ShoppingAPI.DTO;
 
 namespace ShoppingAPI.Controllers
 {
@@ -13,18 +15,33 @@ namespace ShoppingAPI.Controllers
     public class SliderController : ControllerBase
     {
         private readonly ISliderRepository _sliderRepository;
-        public SliderController(ISliderRepository sliderRepository)
+        private readonly IMapper _mapper;
+        public SliderController(ISliderRepository sliderRepository, IMapper mapper)
         {
             _sliderRepository = sliderRepository;
+            _mapper = mapper;
         }
 
-        [HttpGet("GetAlSlider")]
-        public IEnumerable<Slider> GetAll([FromQuery] PaginationFilter pagination, [FromQuery] SortingParams sorting, [FromQuery] FilterParams filterparams)
+        [HttpGet("GetAll")]
+        public IEnumerable<SliderDTO> GetAll([FromQuery] PaginationFilter pagination, [FromQuery] SortingParams sorting, [FromQuery] FilterParams filterparams)
         {
-            var lst = _sliderRepository.GetAllSlider(pagination, sorting, filterparams);
-            return lst;
+            return _sliderRepository.GetAll(pagination, sorting, filterparams); ;
         }
 
+        [HttpGet("{id}")]
+        public SliderDTO Get([FromRoute] int id)
+        {
+            var slider = _sliderRepository.Get(id);
+            var result = _mapper.Map<Slider, SliderDTO>(slider);
+            return result;
+        }
+
+        [HttpPost]
+        public Slider Add(SliderDTO dtoSlider) 
+        {
+          return  _sliderRepository.Add(dtoSlider);
+
+        }
 
     }
 }

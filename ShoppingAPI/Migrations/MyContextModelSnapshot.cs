@@ -36,8 +36,8 @@ namespace ShoppingAPI.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -53,7 +53,7 @@ namespace ShoppingAPI.Migrations
 
                     b.HasKey("SliderId");
 
-                    b.ToTable("HomeSliders", "Shop");
+                    b.ToTable("TopSliders", "Shop");
                 });
 #pragma warning restore 612, 618
         }

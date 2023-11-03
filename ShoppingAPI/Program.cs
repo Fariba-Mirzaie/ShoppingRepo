@@ -21,8 +21,9 @@ builder.Services.AddSwaggerGen();
 
 #region MyServices
 builder.Services.AddDbContext<MyContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("MyCS")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnectionString")));
 builder.Services.AddScoped<ISliderRepository, SliderService>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 #endregion
 
