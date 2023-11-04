@@ -2,13 +2,12 @@
 using ShoppingAPI.BaseParameters;
 using ShoppingAPI.DTO;
 
-namespace ShoppingAPI.Repository
+namespace ShoppingAPI.Services
 {
-    public interface ISliderRepository
+    public interface ISliderService
     {
         public IEnumerable<SliderDTO> GetAll(SliderParameters sliderParameters);
         public Slider Get(int id);
         public Slider Add(SliderDTO dtoSlider);
-
     }
 }

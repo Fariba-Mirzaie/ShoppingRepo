@@ -246,3 +246,5 @@ D:\MyProject\ShoppingRepo\ShoppingAPI\obj\Debug\net6.0\ShoppingAPI.pdb
 D:\MyProject\ShoppingRepo\ShoppingAPI\obj\Debug\net6.0\ShoppingAPI.genruntimeconfig.cache
 D:\MyProject\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\MyProject\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

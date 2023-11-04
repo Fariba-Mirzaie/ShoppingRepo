@@ -1,8 +1,6 @@
-﻿using ShoppingAPI.Functions.Filtering;
-using ShoppingAPI.Models;
-using ShoppingAPI.Functions.Pagination;
+﻿using ShoppingAPI.Models;
 using ShoppingAPI.Repository;
-using ShoppingAPI.Functions.Sorting;
+using ShoppingAPI.BaseParameters;
 using Microsoft.EntityFrameworkCore;
 using ShoppingAPI.DTO;
 using AutoMapper;
@@ -10,57 +8,24 @@ using AutoMapper.QueryableExtensions;
 
 namespace ShoppingAPI.Services
 {
-    public class SliderService : ISliderRepository
+    public class SliderService : ISliderService
     {
-        private readonly MyContext _context;
-        private readonly IMapper _mapper;
-        public SliderService(MyContext context, IMapper mapper)
+        private readonly ISliderRepository _sliderRepository;
+        public SliderService(ISliderRepository repository) => _sliderRepository = repository;
+
+        public Slider Add(SliderDTO dtoSlider)
         {
-            _context = context;
-            _mapper = mapper;
-        }
-
-        public IEnumerable<SliderDTO> GetAll(PaginationFilter pagination, SortingParams sorting, FilterParams filtering)
-        {
-            var query = _context.Sliders.AsQueryable();
-            var validFilter = new PaginationFilter(pagination.pageNumber, pagination.pageSize, query.Count());
-
-            if (!string.IsNullOrEmpty(filtering.Title))
-                query = query.Where(s => s.Title.Contains(filtering.Title));
-
-
-            query = sorting.Type switch
-            {
-                SortingParams.SortType.Asc => query.OrderBy(s => s.SliderId),
-                SortingParams.SortType.Desc => query.OrderByDescending(s => s.SliderId)
-            };
-
-            query = query.Skip((validFilter.pageNumber - 1) * validFilter.pageSize).Take(validFilter.pageSize);
-
-            var mappSliders = query.ProjectTo<SliderDTO>(_mapper.ConfigurationProvider);
-            return mappSliders;
+            return _sliderRepository.Add(dtoSlider);
         }
 
         public Slider Get(int id)
         {
-            return _context.Sliders.IgnoreQueryFilters().Where(s => s.SliderId == id).FirstOrDefault();
+            return _sliderRepository.Get(id);
         }
 
-        public Slider Add(SliderDTO dtoSlider)
+        public IEnumerable<SliderDTO> GetAll(SliderParameters sliderParameters)
         {
-            if (dtoSlider != null)
-            {
-                var mapped = _mapper.Map<SliderDTO, Slider>(dtoSlider);
-                mapped.CreateDate = DateTime.Now;
-                mapped.Description = mapped.Title;
-
-                _context.Sliders.Add(mapped);
-                _context.SaveChanges();
-
-                return mapped;
-            }
-            else
-                return null;
+            return _sliderRepository.GetAll(sliderParameters);
         }
     }
 }
