@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingAPI.BaseParameters;
 using ShoppingAPI.Models;
 using ShoppingAPI.Repository;
 using ShoppingAPI.Services;
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<MyContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnectionString")));
 builder.Services.AddScoped<ISliderRepository , SliderRepository>();
 builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<ISliderParameters, SliderParameters>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

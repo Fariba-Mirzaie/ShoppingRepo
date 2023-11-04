@@ -43,6 +43,9 @@ namespace ShoppingAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SliderGroupId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -53,7 +56,46 @@ namespace ShoppingAPI.Migrations
 
                     b.HasKey("SliderId");
 
+                    b.HasIndex("SliderGroupId");
+
                     b.ToTable("TopSliders", "Shop");
+                });
+
+            modelBuilder.Entity("ShoppingAPI.Models.SliderGroup", b =>
+                {
+                    b.Property<int>("SliderGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SliderGroupId"));
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("SliderGroupId");
+
+                    b.ToTable("SliderGroups", "Shop");
+                });
+
+            modelBuilder.Entity("ShoppingAPI.Models.Slider", b =>
+                {
+                    b.HasOne("ShoppingAPI.Models.SliderGroup", "sliderGroup")
+                        .WithMany("sliders")
+                        .HasForeignKey("SliderGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("sliderGroup");
+                });
+
+            modelBuilder.Entity("ShoppingAPI.Models.SliderGroup", b =>
+                {
+                    b.Navigation("sliders");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,7 @@ namespace ShoppingAPI.Models
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<SliderGroup> SliderGroups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

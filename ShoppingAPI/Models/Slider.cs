@@ -14,5 +14,11 @@ namespace ShoppingAPI.Models
         [MaxLength(200,ErrorMessage ="تعداد کاراکترهای مجاز 200 کاراکتر می باشد")]
         public string Description { get; set; }
         public string Image { get; set; }
+
+        public int SliderGroupId { get; set; }
+
+        public SliderGroup SliderGroup { get; set; }
+
+    
     }
 }

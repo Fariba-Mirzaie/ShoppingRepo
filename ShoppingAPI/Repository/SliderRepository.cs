@@ -11,8 +11,8 @@ namespace ShoppingAPI.Repository
     {
         private readonly MyContext _context;
         private readonly IMapper _mapper;
-        private readonly ISliderParamaters _parameters;
-        public SliderRepository(MyContext context, IMapper mapper, ISliderParamaters sliderParameters)
+        private readonly ISliderParameters _parameters;
+        public SliderRepository(MyContext context, IMapper mapper, ISliderParameters sliderParameters)
         {
             _context = context;
             _mapper = mapper;
@@ -52,7 +52,7 @@ namespace ShoppingAPI.Repository
 
         public Slider Get(int id)
         {
-            return _context.Sliders.IgnoreQueryFilters().Where(s => s.SliderId == id).FirstOrDefault();
+            return _context.Sliders.IgnoreQueryFilters().Include(p => p.SliderGroup).Where(s => s.SliderId == id).FirstOrDefault();
         }
 
         public Slider Add(SliderDTO dtoSlider)

@@ -1,6 +1,6 @@
 ﻿namespace ShoppingAPI.BaseParameters
 {
-    public class SliderParameters : ISliderParamaters
+    public class SliderParameters : ISliderParameters
     {
         public string? Title { get; set; }
         public int pageNumber { get; set; } = 1;

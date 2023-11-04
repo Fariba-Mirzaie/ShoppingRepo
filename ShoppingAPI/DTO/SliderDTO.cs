@@ -9,5 +9,6 @@ namespace ShoppingAPI.DTO
         public string Title { get; set; }
         public bool Status { get; set; } = true;
         public string MainImage { get; set; }
+        public string GroupTitle { get; set; }
     }
 }

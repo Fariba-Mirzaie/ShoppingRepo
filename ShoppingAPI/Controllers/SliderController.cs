@@ -22,7 +22,6 @@ namespace ShoppingAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        //public IEnumerable<SliderDTO> GetAll([FromQuery] PaginationFilter pagination, [FromQuery] SortingParams sorting, [FromQuery] FilterParams filterparams)
         public IEnumerable<SliderDTO> GetAll([FromQuery] SliderParameters sliderParameters)
         
         {
@@ -42,6 +41,7 @@ namespace ShoppingAPI.Controllers
         {
             return _sliderService.Add(dtoSlider);
         }
+
 
     }
 }
