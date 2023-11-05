@@ -9,7 +9,5 @@ namespace ShoppingAPI.Models
         public string Title { get; set; }
         public bool Status { get; set; } = true;
 
-        public List<Slider> sliders { get; set; }
-
     }
 }

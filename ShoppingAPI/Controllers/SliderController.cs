@@ -23,7 +23,6 @@ namespace ShoppingAPI.Controllers
 
         [HttpGet("GetAll")]
         public IEnumerable<SliderDTO> GetAll([FromQuery] SliderParameters sliderParameters)
-        
         {
             return _sliderService.GetAll(sliderParameters);
         }
@@ -31,9 +30,7 @@ namespace ShoppingAPI.Controllers
         [HttpGet("{id}")]
         public SliderDTO Get([FromRoute] int id)
         {
-            var slider = _sliderService.Get(id);
-            var result = _mapper.Map<Slider, SliderDTO>(slider);
-            return result;
+            return _mapper.Map<Slider, SliderDTO>(_sliderService.Get(id));
         }
 
         [HttpPost]

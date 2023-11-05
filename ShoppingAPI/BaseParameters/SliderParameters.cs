@@ -10,11 +10,11 @@
 
         public enum SortType { Asc, Desc }
 
-        public void Pagination(int pageNumber, int pageSize, int pageCount)
+        public void Pagination(int pageNumber, int pageSize)
         {
             this.pageNumber = pageNumber < 1 ? 1 : pageNumber;
             this.pageSize = pageSize > 5 ? 5 : pageSize;
-            this.pageCount = (int)Math.Ceiling((double)pageCount);
+            //this.pageCount = (int)Math.Ceiling((double)pageCount);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ShoppingAPI.Repository
             var query = _context.Sliders.AsQueryable();
             //var validFilter = new PaginationFilter(pagination.pageNumber, pagination.pageSize, query.Count());
 
-            _parameters.Pagination(sliderParameters.pageNumber, sliderParameters.pageSize, query.Count());
+            _parameters.Pagination(sliderParameters.pageNumber, sliderParameters.pageSize);
 
             if (!string.IsNullOrEmpty(sliderParameters.Title))
                 query = query.Where(s => s.Title.Contains(sliderParameters.Title));
@@ -41,7 +41,6 @@ namespace ShoppingAPI.Repository
             var mappSliders = query.ProjectTo<SliderDTO>(_mapper.ConfigurationProvider);
             return mappSliders;
 
-
             //query.Select(s => new SliderDTO
             //{
             //    Title = s.Title,
@@ -52,14 +51,14 @@ namespace ShoppingAPI.Repository
 
         public Slider Get(int id)
         {
-            return _context.Sliders.IgnoreQueryFilters().Include(p => p.SliderGroup).Where(s => s.SliderId == id).FirstOrDefault();
+            return _context.Sliders.IgnoreQueryFilters().Where(s => s.SliderId == id).FirstOrDefault();
         }
 
-        public Slider Add(SliderDTO dtoSlider)
+        public Slider Add(SliderDTO sliderDto)
         {
-            if (dtoSlider != null)
+            if (sliderDto != null)
             {
-                var mapped = _mapper.Map<SliderDTO, Slider>(dtoSlider);
+                var mapped = _mapper.Map<SliderDTO, Slider>(sliderDto);
                 mapped.CreateDate = DateTime.Now;
                 mapped.Description = mapped.Title;
 

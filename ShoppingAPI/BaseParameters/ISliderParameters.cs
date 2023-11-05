@@ -2,6 +2,6 @@
 {
     public interface ISliderParameters
     {
-        void Pagination(int pageNumber, int pageSize, int pageCount);
+        void Pagination(int pageNumber, int pageSize);
     }
 }

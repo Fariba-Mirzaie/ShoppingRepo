@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoppingAPI.Models;
 
@@ -11,9 +12,11 @@ using ShoppingAPI.Models;
 namespace ShoppingAPI.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20231105080841_mig16")]
+    partial class mig16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +64,19 @@ namespace ShoppingAPI.Migrations
                     b.ToTable("TopSliders", "Shop");
                 });
 
+            modelBuilder.Entity("ShoppingAPI.Models.Slider3", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("slider3s", "Shop");
+                });
+
             modelBuilder.Entity("ShoppingAPI.Models.SliderGroup", b =>
                 {
                     b.Property<int>("SliderGroupId")
@@ -68,6 +84,9 @@ namespace ShoppingAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SliderGroupId"));
+
+                    b.Property<int?>("Slider3Id")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -78,6 +97,8 @@ namespace ShoppingAPI.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SliderGroupId");
+
+                    b.HasIndex("Slider3Id");
 
                     b.ToTable("SliderGroups", "Shop");
                 });
@@ -91,6 +112,18 @@ namespace ShoppingAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("SliderGroup");
+                });
+
+            modelBuilder.Entity("ShoppingAPI.Models.SliderGroup", b =>
+                {
+                    b.HasOne("ShoppingAPI.Models.Slider3", null)
+                        .WithMany("sliders333")
+                        .HasForeignKey("Slider3Id");
+                });
+
+            modelBuilder.Entity("ShoppingAPI.Models.Slider3", b =>
+                {
+                    b.Navigation("sliders333");
                 });
 #pragma warning restore 612, 618
         }

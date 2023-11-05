@@ -8,6 +8,6 @@ namespace ShoppingAPI.Repository
     {
         public IEnumerable<SliderDTO> GetAll(SliderParameters sliderParameters);
         public Slider Get(int id);
-        public Slider Add(SliderDTO dtoSlider);
+        public Slider Add(SliderDTO sliderDto);
     }
 }
