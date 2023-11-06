@@ -9,6 +9,7 @@ namespace ShoppingAPI.Models
 
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderGroup> SliderGroups { get; set; }
+        public DbSet<SliderGallery> SliderGallerys { get; set; }    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -14,10 +14,12 @@ namespace ShoppingAPI.Controllers
     public class SliderController : ControllerBase
     {
         private readonly ISliderService _sliderService;
+        private readonly ISliderGalleryService _galleryService;
         private readonly IMapper _mapper;
-        public SliderController(ISliderService sliderService, IMapper mapper)
+        public SliderController(ISliderService sliderService,ISliderGalleryService galleryService, IMapper mapper)
         {
             _sliderService = sliderService;
+            _galleryService = galleryService;
             _mapper = mapper;
         }
 
@@ -37,6 +39,13 @@ namespace ShoppingAPI.Controllers
         public Slider Add(SliderDTO dtoSlider)
         {
             return _sliderService.Add(dtoSlider);
+        }
+
+        [HttpGet("getGallery")]
+        public List<SliderGallery> getgallery(int id) 
+        {
+            var listt= _galleryService.GetGroups(id);
+            return listt;
         }
 
 

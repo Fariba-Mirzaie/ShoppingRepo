@@ -13,9 +13,9 @@ namespace ShoppingAPI.Services
         private readonly ISliderRepository _sliderRepository;
         public SliderService(ISliderRepository repository) => _sliderRepository = repository;
 
-        public Slider Add(SliderDTO dtoSlider)
+        public Slider Add(SliderDTO sliderDto)
         {
-            return _sliderRepository.Add(dtoSlider);
+            return _sliderRepository.Add(sliderDto);
         }
 
         public Slider Get(int id)

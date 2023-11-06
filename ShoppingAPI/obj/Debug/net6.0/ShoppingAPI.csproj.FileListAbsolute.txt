@@ -248,3 +248,7 @@ D:\MyProject\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\MyProject\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.dll
 E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

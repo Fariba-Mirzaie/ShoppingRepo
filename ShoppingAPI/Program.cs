@@ -9,11 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services
     .AddControllers()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
     .AddJsonOptions(options =>
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())); 
-
+      options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +28,8 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection
 builder.Services.AddScoped<ISliderRepository , SliderRepository>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<ISliderParameters, SliderParameters>();
+builder.Services.AddScoped<ISliderGalleryRepository, SliderGalleryRepository>();
+builder.Services.AddScoped<ISliderGalleryService, SliderGalleryService>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

@@ -15,7 +15,5 @@ namespace ShoppingAPI.Models
         public string Description { get; set; }
         public string Image { get; set; }
 
-        public SliderGroup SliderGroup { get; set; }
-
     }
 }
