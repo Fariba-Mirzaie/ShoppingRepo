@@ -6,9 +6,11 @@ using ShoppingAPI.BaseParameters;
 using AutoMapper;
 using ShoppingAPI.DTO;
 using ShoppingAPI.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace ShoppingAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class SliderController : ControllerBase
@@ -23,7 +25,9 @@ namespace ShoppingAPI.Controllers
             _mapper = mapper;
         }
 
+       
         [HttpGet("GetAll")]
+        [EnableCors("DefaultCorsPolicy")]
         public IEnumerable<SliderDTO> GetAll([FromQuery] SliderParameters sliderParameters)
         {
             return _sliderService.GetAll(sliderParameters);
@@ -41,6 +45,7 @@ namespace ShoppingAPI.Controllers
             return _sliderService.Add(dtoSlider);
         }
 
+        //[DisableCors]
         [HttpGet("getGallery")]
         public List<SliderGallery> getgallery(int id) 
         {
