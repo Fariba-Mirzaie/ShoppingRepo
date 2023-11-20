@@ -10,9 +10,10 @@ using Microsoft.AspNetCore.Cors;
 
 namespace ShoppingAPI.Controllers
 {
-    
+    [EnableCors("MyPolicy")]
     [Route("api/[controller]")]
     [ApiController]
+
     public class SliderController : ControllerBase
     {
         private readonly ISliderService _sliderService;
@@ -25,9 +26,9 @@ namespace ShoppingAPI.Controllers
             _mapper = mapper;
         }
 
-       
+
+        //[EnableCors("AllowAll")]
         [HttpGet("GetAll")]
-        [EnableCors("DefaultCorsPolicy")]
         public IEnumerable<SliderDTO> GetAll([FromQuery] SliderParameters sliderParameters)
         {
             return _sliderService.GetAll(sliderParameters);
