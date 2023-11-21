@@ -7,8 +7,6 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 // Add services to the container.
 
 builder.Services
@@ -34,9 +32,21 @@ builder.Services.AddScoped<ISliderGalleryRepository, SliderGalleryRepository>();
 builder.Services.AddScoped<ISliderGalleryService, SliderGalleryService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddCors(b => b.AddPolicy("MyPolicy", options =>
-options.WithOrigins("https://google.com")
-.WithMethods("GET", "POST")));
+//builder.Services.AddCors(b => b.AddPolicy("MyPolicy", options =>
+//options.WithOrigins("https://google.com", "https://localhost:7111", "http://localhost:5111")
+//.WithMethods("GET", "POST")));
+
+
+builder.Services.AddCors(options => options.AddPolicy("MyPolicy", builder =>
+{
+    builder
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .WithExposedHeaders("*")
+        .AllowCredentials()
+        .SetPreflightMaxAge(TimeSpan.FromSeconds(2520))
+        .SetIsOriginAllowed(origin => _ = true);
+}));
 
 #endregion
 

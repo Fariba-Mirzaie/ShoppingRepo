@@ -26,8 +26,6 @@ namespace ShoppingAPI.Controllers
             _mapper = mapper;
         }
 
-
-        //[EnableCors("AllowAll")]
         [HttpGet("GetAll")]
         public IEnumerable<SliderDTO> GetAll([FromQuery] SliderParameters sliderParameters)
         {
@@ -46,12 +44,18 @@ namespace ShoppingAPI.Controllers
             return _sliderService.Add(dtoSlider);
         }
 
-        //[DisableCors]
         [HttpGet("getGallery")]
         public List<SliderGallery> getgallery(int id) 
         {
-            var listt= _galleryService.GetGroups(id);
-            return listt;
+            var myGallery= _galleryService.GetGroups(id);
+            return myGallery;
+        }
+
+        [HttpGet("test")]
+        public string test() 
+        {
+            return "it is my test";
+        
         }
 
 
