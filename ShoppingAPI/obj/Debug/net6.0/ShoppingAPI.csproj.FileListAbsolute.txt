@@ -252,3 +252,4 @@ E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Microsoft.AspNetCor
 E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\MyFiles\Project\ShoppingRepo\ShoppingAPI\bin\Debug\net6.0\BCrypt.Net-Next.dll

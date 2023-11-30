@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/OO7q9+1VHLP9AspzWRlhZLDEseHXJvohgTvwUt3zlVtdxorF8DBdzrQW5B+Y7FDluIa4si52vB8sVRqPAPPqA==",
+  "dgSpecHash": "N7GaojkJNtYxT9Ix4aHu7PznkqMvPi1CFUF3Aa8jehXsrRlfQEjieCPnK8EtqcFVWvksqoJ26VN3ASUCqsr6LQ==",
   "success": true,
   "projectFilePath": "E:\\MyFiles\\Project\\ShoppingRepo\\ShoppingAPI\\ShoppingAPI.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\mirzaei\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\mirzaei\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\mirzaei\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\mirzaei\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\mirzaei\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mirzaei\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.24\\microsoft.aspnetcore.jsonpatch.6.0.24.nupkg.sha512",
     "C:\\Users\\mirzaei\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.24\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.24.nupkg.sha512",

@@ -30,6 +30,8 @@ builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<ISliderParameters, SliderParameters>();
 builder.Services.AddScoped<ISliderGalleryRepository, SliderGalleryRepository>();
 builder.Services.AddScoped<ISliderGalleryService, SliderGalleryService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 //builder.Services.AddCors(b => b.AddPolicy("MyPolicy", options =>

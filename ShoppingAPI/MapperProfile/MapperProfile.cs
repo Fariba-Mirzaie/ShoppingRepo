@@ -13,6 +13,8 @@ namespace ShoppingAPI.MapperProfile
                 .ForMember(s => s.Image,
                            dto => dto.MapFrom(s => s.MainImage));
 
+            CreateMap<User , UserDTO>().ReverseMap();
+
             //CreateMap<IEnumerable<Slider>, IEnumerable<SliderDTO>>().ReverseMap();
 
                 
