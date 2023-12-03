@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ShoppingAPI.BaseParameters;
 using ShoppingAPI.Models;
 using ShoppingAPI.Repository;
 using ShoppingAPI.Services;
+using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +54,29 @@ builder.Services.AddCors(options => options.AddPolicy("MyPolicy", builder =>
         .SetIsOriginAllowed(origin => _ = true);
 }));
 
+
+//Jwt configuration starts here
+var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
+var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+ .AddJwtBearer(options =>
+ {
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         //ValidateIssuer = true,
+         //ValidateAudience = true,
+         //ValidateLifetime = true,
+         //ValidateIssuerSigningKey = true,
+         ValidIssuer = jwtIssuer,
+         ValidAudience = jwtIssuer,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+         
+ };
+     
+ });
+//Jwt configuration ends here
+
 #endregion
 
 var app = builder.Build();
@@ -66,6 +93,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("MyPolicy");
 
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -22,37 +22,40 @@ namespace ShoppingAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public ActionResult<User> Register(UserDTO userDTO)
         {
             return _userService.Register(userDTO);
         }
 
-        [HttpGet]
-        public string Login(UserDTO user)
+        [HttpPost("Login")]
+        public string Login(UserDTO userDTO) 
         {
-            // _userService.Login(user);
+            var user = _userService.GetUser(userDTO);
 
-            //return CreateToken(user);
-            return "";
-
+            if (user != null)
+                return GenerateToken(user);
+            else
+                return "User Is Null";
         }
-        private string CreateToken(User user)
+
+        [HttpGet("GenerateToken")]
+        public string GenerateToken(User user)
         {
-            List<Claim> claims = new List<Claim>()
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var claims = new[]
             {
-                new Claim(ClaimTypes.Name , user.Username)
+                new Claim(ClaimTypes.Name , user.Username),
+                new Claim(ClaimTypes.Email,user.Email)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("JWT:Token").Value));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: cred
-                );
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-            return jwt;
+            var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Issuer"],
+              claims,
+              expires: DateTime.Now.AddMinutes(5),
+              signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

@@ -15,18 +15,19 @@ namespace ShoppingAPI.Repository
 
         }
 
-        public string Login(UserDTO user)
+        public User Register(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public User Register(UserDTO userDto)
-        {
-            var userMapped = _mapper.Map<UserDTO, User>(userDto);
-            _context.Users.Add(userMapped);
+            _context.Users.Add(user);
             _context.SaveChanges();
 
-            return userMapped;
+            return user;
         }
+
+        public User GetUser(User user)
+        {
+            return _context.Users.Where(u => u.Username == user.Username && u.PasswordHash == user.PasswordHash).FirstOrDefault();
+        }
+
+        
     }
 }

@@ -17,30 +17,49 @@ namespace ShoppingAPI.Services
 
         }
 
-        public string Login(UserDTO user)
+        public User Register(UserDTO userDto)
         {
-            var result = "";
-            var userMapped = _mapper.Map<UserDTO , User>(user);
-            
+            //string passwordHash = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+            var user = _mapper.Map<UserDTO, User>(userDto);
 
-            if (user.Username != userMapped.Username)
-                result = "Username Wrong!";
-
-            if (!BCrypt.Net.BCrypt.Verify(user.Password, userMapped.PasswordHash))
-                result = "Password Wrong!";
-
-            _userRepository.Login(user);
-
-
-            return result;
-
-        }
-
-        public User Register(UserDTO user)
-        {
-            string passwordHash=BCrypt.Net.BCrypt.HashPassword(user.Password);
-            user.Password = passwordHash;
             return _userRepository.Register(user);
         }
+
+        public User GetUser(UserDTO userDTO)
+        {
+            var user = _mapper.Map<UserDTO, User>(userDTO);
+
+            return _userRepository.GetUser(user);
+
+
+
+            //var user2 = new User();
+
+            //if (ValidateUser(userDTO))
+            //{
+            //    user2 = _userRepository.GetUser(user);
+            //    return user2;
+            //}
+
+            //else return null;
+
+        }
+
+        //public bool ValidateUser(UserDTO userDTO)
+        //{
+        //    var user = _mapper.Map<UserDTO, User>(userDTO);
+
+        //    //if (BCrypt.Net.BCrypt.Verify(userDTO.Password, user.PasswordHash))
+        //    //    return true;
+        //    //else
+        //    //    return false;
+
+        //    //var ddd = BCrypt.Net.BCrypt.Verify(userDTO.Password, user.PasswordHash);
+
+        //    //if (userDTO.Username != user.Username || !BCrypt.Net.BCrypt.Verify(userDTO.Password, user.PasswordHash))
+        //    //    return false;
+        //    //else
+        //    //    return true;
+        //}
     }
 }
